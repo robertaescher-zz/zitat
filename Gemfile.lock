@@ -29,6 +29,7 @@ GEM
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
     builder (3.1.4)
+    cocoon (1.2.5)
     coffee-rails (4.0.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.0)
@@ -44,6 +45,8 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.0.2)
+    formtastic (2.2.1)
+      actionpack (>= 3.0)
     foundation-rails (5.0.2.0)
       railties (>= 3.1.0)
       sass (>= 3.2.0)
@@ -121,8 +124,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  cocoon
   coffee-rails (~> 4.0.0)
   devise
+  formtastic
   foundation-rails
   jbuilder (~> 1.2)
   jquery-rails

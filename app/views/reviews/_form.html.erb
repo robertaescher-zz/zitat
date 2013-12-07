@@ -1,0 +1,30 @@
+<%= semantic_form_for @review do |f| %>
+  <% if @review.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
+
+      <ul>
+      <% @review.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.inputs do %>
+      <%= f.input :book_id, :as => :select, :collection => Book.all %>
+    <% end %>
+  </div>
+  <p>Quote</p>
+    <%= f.semantic_fields_for :quotes do |q| %>
+      <div class="twelve columns">
+        <%= q.inputs do %>
+          <%= q.input :page_number %>
+          <%= q.input :content %>
+          <%= q.input :tag %>
+        <% end %>
+      <% end %>
+      </div>
+    <%= f.actions %>
+<% end %>
