@@ -1,6 +1,7 @@
 Zitat::Application.routes.draw do
+  devise_for :users
   resources :books
-
+  root :to => redirect('/books')
   resources :quotes
 
   # The priority is based upon order of creation: first created -> highest priority.
