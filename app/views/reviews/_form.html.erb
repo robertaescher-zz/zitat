@@ -19,12 +19,13 @@
   <p>Quote</p>
     <%= f.semantic_fields_for :quotes do |q| %>
       <div class="twelve columns">
-        <%= q.inputs do %>
-          <%= q.input :page_number %>
-          <%= q.input :content %>
-          <%= q.input :tag %>
-        <% end %>
+        <%= render 'quote_fields', :f => q %>
+        <div class="links">
+          <%= link_to_add_association 'add quote', f, :quote %>
+        </div> 
       <% end %>
+
+
       </div>
     <%= f.actions %>
 <% end %>
