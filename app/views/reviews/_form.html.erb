@@ -1,4 +1,4 @@
-<%= semantic_form_for @review do |f| %>
+<%= simple_form_for @review do |f| %>
   <% if @review.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@review.errors.count, "error") %> prohibited this review from being saved:</h2>
@@ -12,12 +12,10 @@
   <% end %>
 
   <div class="field">
-    <%= f.inputs do %>
-      <%= f.input :book_id, :as => :select, :collection => Book.all %>
-    <% end %>
+      <%= f.association :book %>
   </div>
   <p>Quote</p>
-    <%= f.semantic_fields_for :quotes do |q| %>
+    <%= f.simple_fields_for :quotes do |q| %>
       <div class="twelve columns">
         <%= render 'quote_fields', :f => q %>
         <div class="links">
@@ -27,5 +25,5 @@
 
 
       </div>
-    <%= f.actions %>
+    <%= f.submit %>
 <% end %>
