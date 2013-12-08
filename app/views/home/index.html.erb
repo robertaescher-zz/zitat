@@ -1,7 +1,23 @@
 <div class="row">
 	<div class="small-6 small-centered columns">
 		<p><%= image_tag "logo.png" %></p>
-		<p><%= link_to "Login", new_user_session_path, :class => 'button radius expand'  %></p>
+	</div>
+
+</div>
+
+<div class="row">
+	<div class="small-6 columns">
+		<h2>Faça o seu cadastro, registre os seus resumos e facilite a sua vida na hora de criar os artigos!</h2>
+	</div>
+	<div class="small-6 columns">
+		<%= simple_form_for("user", :url => user_registration_path) do |f| %>
+		  	<%= f.input :email %>
+		  	<%= f.input :password %>
+		  	<%= f.input :password_confirmation %>
+		  <%= f.button :submit, :class => 'button radius expand'  %>
+		<% end %>
 	</div>
 </div>
+
+
 
