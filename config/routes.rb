@@ -1,6 +1,4 @@
 Zitat::Application.routes.draw do
-  resources :reviews
-
   get "home/index"
   devise_for :users
   resources :books

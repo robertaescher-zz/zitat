@@ -1,41 +1,22 @@
-  <h1>Listing books</h1>
+<div class="row">
+  <div class="small-10 columns"><h1>Listing books</h1></div>
+  <div class="small-2  columns"><%= link_to 'New Book', new_book_path, :class => "button expand radius" %>
+</div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Subtitle</th>
-      <th>Author firstname</th>
-      <th>Author lastname</th>
-      <th>Publisher</th>
-      <th>City</th>
-      <th>Year</th>
-      <th>Summary</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="row">
     <% @books.each do |book| %>
-      <tr>
-        <td><%= book.title %></td>
-        <td><%= book.subtitle %></td>
-        <td><%= book.author_firstname %></td>
-        <td><%= book.author_lastname %></td>
-        <td><%= book.publisher %></td>
-        <td><%= book.city %></td>
-        <td><%= book.year %></td>
-        <td><%= book.summary %></td>
-        <td><%= link_to 'Show', book %></td>
-        <td><%= link_to 'Edit', edit_book_path(book) %></td>
-        <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <div class="small-3 columns">
+        <h3><%= book.title %></h3>
+        <h5><%= book.subtitle %></h5>
+        <h4><%= book.author_lastname %>. <%= book.author_firstname %></h4>
+        <p><%= book.summary %></p>
+        <p><%= link_to 'Show', book, :class => "button radius expand" %></p>
+      </div>
     <% end %>
-  </tbody>
-</table>
+     
+</div>
 
-<br>
 
-<%= link_to 'New Book', new_book_path %>
+
+
