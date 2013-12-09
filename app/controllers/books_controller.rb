@@ -15,6 +15,8 @@ class BooksController < ApplicationController
   # GET /books/new
   def new
     @book = Book.new
+    @book.quotes.build
+
   end
 
   # GET /books/1/edit

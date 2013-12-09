@@ -25,9 +25,11 @@ class QuotesController < ApplicationController
   # POST /quotes.json
   def create
     @quote = Quote.new(quote_params)
+
+
     respond_to do |format|
       if @quote.save
-        format.html { redirect_to @quote, notice: 'Quote was successfully created.' }
+        format.html { redirect_to book_path(@quote.book_id), notice: 'Quote was successfully created.' }
         format.json { render action: 'show', status: :created, location: @quote }
       else
         format.html { render action: 'new' }
@@ -68,6 +70,6 @@ class QuotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def quote_params
-      params.require(:quote).permit(:page_number, :content, :tag, :book_id)
+      params.require(:quote).permit(:page_number, :content, :tag, :book_id, :review_id)
     end
 end

@@ -15,14 +15,13 @@
       <%= f.association :book %>
   </div>
   <p>Quote</p>
-    <%= f.simple_fields_for :quotes do |q| %>
+    <%= f.simple_fields_for :quotes do |builder| %>
       <div class="twelve columns">
-        <%= render 'quote_fields', :f => q %>
+        <%= render 'quote_fields', :f => builder %>
         <div class="links">
-          <%= link_to_add_association 'add quote', f, :quote %>
         </div> 
       <% end %>
-
+ <%= link_to_add_association 'add quote', f, :quotes %>
 
       </div>
     <%= f.submit %>

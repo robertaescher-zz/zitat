@@ -1,44 +1,58 @@
+<div class="row">
+  <div class="small-11 columns">
+    <p>title</p>
+    <h1> <%= @book.title %> </h1>
+    <h2>  <%= @book.subtitle %> </h2>
+    <p>author</p>
+    <h3>  <%= @book.author_lastname %>, <%= @book.author_firstname %> </h3>
+  </div>
+  <div class="small-1 columns">
+    <%= link_to 'Edit', edit_book_path(@book), :class => "button radius small" %> 
+</div>
+</div>
+<div class="row">
+  <div class="small-4 columns">
+    <ul>
+      <li>Publisher: <%= @book.publisher %></li>
+      <li>City: <%= @book.city %></li>
+      <li>Year: <%= @book.year %></li>
+    </ul>
+    <p>summary</p>
+    <p> <%= @book.summary %></p>
+
+  </div>
+  <div class="small-8  columns">  
+    <div class="row">
+      <div class-"small-12 columns">
+        <%= link_to "Add Quote", '#', data: {:'reveal-id' => 'addQuote'}, :class => 'button radius small' %>
+        <div id="addQuote" class="reveal-modal" data-reveal>
+         <%= simple_form_for("quote", :url => quotes_path) do |f| %>
+            <%= f.input :page_number %>
+            <%= f.input :content %>
+            <%= f.input :tag %>
+            <%= f.button :submit, :class => 'button radius expand'  %>
+            <%= f.hidden_field :book_id, :value => @book.id %>
+          <% end %>
+            <a class="close-reveal-modal">&#215;</a>
+        </div>
+         
+
+    </div>
+    <div class="row">
+      <div class="small-12 columns">
+        <% @book.quotes.each do |quote| %>
+          <p><strong>quote </strong></p>
+          <p><%= quote.content%></p>
+          <p><%= quote.tag%></p>
+          <p><%= quote.page_number%></p>
+          <p>Citação direta: (<%= @book.author_lastname%>, <%= @book.year%>, p.<%= quote.page_number%>)</p>
+          <p>Citação indireta: (<%= @book.author_lastname%>, <%= @book.year%>, p.<%= quote.page_number%>)</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
 <p id="notice"><%= notice %></p>
+  
 
-<p>
-  <strong>Title:</strong>
-  <%= @book.title %>
-</p>
-
-<p>
-  <strong>Subtitle:</strong>
-  <%= @book.subtitle %>
-</p>
-
-<p>
-  <strong>Author firstname:</strong>
-  <%= @book.author_firstname %>
-</p>
-
-<p>
-  <strong>Author lastname:</strong>
-  <%= @book.author_lastname %>
-</p>
-
-<p>
-  <strong>Publisher:</strong>
-  <%= @book.publisher %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @book.city %>
-</p>
-
-<p>
-  <strong>Year:</strong>
-  <%= @book.year %>
-</p>
-
-<p>
-  <strong>Summary:</strong>
-  <%= @book.summary %>
-</p>
-
-<%= link_to 'Edit', edit_book_path(@book) %> |
 <%= link_to 'Back', books_path %>

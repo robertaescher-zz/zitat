@@ -1,4 +1,4 @@
-<%= semantic_form_for @quote do |f| %>
+<%= simple_form_for @quote do |f| %>
   <% if @quote.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@quote.errors.count, "error") %> prohibited this quote from being saved:</h2>
@@ -24,8 +24,8 @@
     <%= f.text_field :tag %>
   </div>
   <div class="field">
-    <%= f.label :book_id %><br>
-    <%= f.text_field :book_id %>
+    <%= f.association :book %>
+    <%= f.association :review %>
   </div>
   <div class="actions">
     <%= f.submit %>

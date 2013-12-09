@@ -15,8 +15,8 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/new
   def new
-    @review = Review.new
-    @review.quote.build
+    @review = Review.new   
+    @review.quotes.build
   end
 
   # GET /reviews/1/edit
@@ -72,6 +72,6 @@ class ReviewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
-      params.require(:review).permit(:book_id, :user_id, :quote_id)
+      params.require(:review).permit(:book_id, :user_id, quotes_attributes: [:id, :content, :page_number, :tag, :book_id, :review_id])
     end
 end
