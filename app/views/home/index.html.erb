@@ -1,23 +1,38 @@
 <div class="row">
-	<div class="small-6 small-centered columns">
-		<p><%= image_tag "logo.png" %></p>
-	</div>
+      <div class="small-12 columns">
+      	<div class="row">
+      		<div class="small-2 small-offset-10 columns">
+      			<%= link_to "Login", '#', data: {:'reveal-id' => 'loginModal'}, :class => 'button radius small' %>
+              <div id="loginModal" class="reveal-modal" data-reveal>
+                <%= render 'layouts/login' %>
+                <a class="close-reveal-modal">&#215;</a>
+              </div>    
+      		</div>
+      	</div>	
+          <div class="row">
+			<div class="small-6 small-centered columns">
+				<p><%= image_tag "logo.png" %></p>
+			</div>
+		</div>
 
-</div>
+		<div class="row">
+			<div class="small-6 columns">
+				<h2>Faça o seu cadastro, registre os seus resumos e facilite a sua vida na hora de criar os artigos!</h2>
+			</div>
+			<div class="small-6 columns">
+				<%= simple_form_for("user", :url => user_registration_path) do |f| %>
+				  	<%= f.input :email %>
+				  	<%= f.input :password %>
+				  	<%= f.input :password_confirmation %>
+				  <%= f.button :submit, :class => 'button radius expand'  %>
+				<% end %>
+			</div>
+		</div>
+      </div>   
+    </div>
 
-<div class="row">
-	<div class="small-6 columns">
-		<h2>Faça o seu cadastro, registre os seus resumos e facilite a sua vida na hora de criar os artigos!</h2>
-	</div>
-	<div class="small-6 columns">
-		<%= simple_form_for("user", :url => user_registration_path) do |f| %>
-		  	<%= f.input :email %>
-		  	<%= f.input :password %>
-		  	<%= f.input :password_confirmation %>
-		  <%= f.button :submit, :class => 'button radius expand'  %>
-		<% end %>
-	</div>
-</div>
+
+
 
 
 

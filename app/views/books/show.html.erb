@@ -1,14 +1,20 @@
-<div class="row">
+
+<div class="off-canvas-wrap">
+      <div class="inner-wrap">
+        
+        <%= render 'layouts/navbar' %>
+        
+        <section class="main-section">
+          <div class="row">
   <div class="small-11 columns">
     <p>title</p>
-    <h1> <%= @book.title %> </h1>
-    <h2>  <%= @book.subtitle %> </h2>
+    <h1> <strong> <%= @book.title %></strong>. <%= @book.subtitle %> </h1>
     <p>author</p>
     <h3>  <%= @book.author_lastname %>, <%= @book.author_firstname %> </h3>
   </div>
   <div class="small-1 columns">
     <%= link_to 'Edit', edit_book_path(@book), :class => "button radius small" %> 
-</div>
+  </div>
 </div>
 <div class="row">
   <div class="small-4 columns">
@@ -19,12 +25,11 @@
     </ul>
     <p>summary</p>
     <p> <%= @book.summary %></p>
-
   </div>
-  <div class="small-8  columns">  
+  <div class="small-7 small-offset-1  columns">  
     <div class="row">
-      <div class-"small-12 columns">
-        <%= link_to "Add Quote", '#', data: {:'reveal-id' => 'addQuote'}, :class => 'button radius small' %>
+      <div class-"small-12 columns clearfix">
+        <%= link_to "Add Quote", '#', data: {:'reveal-id' => 'addQuote'}, :class => 'button radius small right' %>
         <div id="addQuote" class="reveal-modal" data-reveal>
          <%= simple_form_for("quote", :url => quotes_path) do |f| %>
             <%= f.input :page_number %>
@@ -35,23 +40,53 @@
           <% end %>
             <a class="close-reveal-modal">&#215;</a>
         </div>
-         
-
+      </div>   
     </div>
     <div class="row">
       <div class="small-12 columns">
         <% @book.quotes.each do |quote| %>
-          <p><strong>quote </strong></p>
-          <p><%= quote.content%></p>
-          <p><%= quote.tag%></p>
-          <p><%= quote.page_number%></p>
-          <p>Citação direta: (<%= @book.author_lastname%>, <%= @book.year%>, p.<%= quote.page_number%>)</p>
-          <p>Citação indireta: (<%= @book.author_lastname%>, <%= @book.year%>, p.<%= quote.page_number%>)</p>
+          <div class="row">
+            <div class="small-12 columns">
+                <h6>pg <strong> <%= quote.page_number%></strong></h6>
+            </div>
+          </div>
+          <div class="row">
+            <div class="small-12 columns">
+              <p><%= quote.content%></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="small-12 columns">
+              <p> <strong>Tags:</strong> <%= quote.tag%></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="small-12 columns">
+              <dl class="accordion" data-accordion>
+                <dd>
+                  <a href="#panel1">Indireta</a>
+                  <div id="panel1"class="content">
+                    <h6>(<%= @book.author_lastname%>, <%= @book.year%>, p.<%= quote.page_number%>)</h6>
+                  </div>
+                  <a href="#panel2">Direta</a>
+                  <div id="panel2"class="content">
+                    <h6>(<%= @book.author_lastname%>, <%= @book.year%>, p.<%= quote.page_number%>)</h6>
+                  </div>
+                </dd>
+              </dl>
+            </div>
+          </div>
         <% end %>
       </div>
     </div>
   </div>
 </div>
+        </section>
+      </div>   
+    </div>
+
+
+
 <p id="notice"><%= notice %></p>
   
 

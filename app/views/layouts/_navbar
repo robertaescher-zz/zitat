@@ -1,0 +1,29 @@
+<nav class="tab-bar">
+      <section class="left-small">
+        <a class="left-off-canvas-toggle menu-icon" ><span></span></a>
+      </section>
+      <% if user_signed_in? %>
+        <section class="middle tab-bar-section">
+          <h1 class="title">
+              <%= current_user.email %>
+          </h1>
+        </section>
+        <section class="right-small">
+          <%= link_to "Logout", destroy_user_session_path, method: :delete  %>
+        </section>
+    </nav>
+      <% else %>
+          <%= link_to "Login", '#', data: {:'reveal-id' => 'loginModal'}, :class => 'button radius small' %>
+              <div id="loginModal" class="reveal-modal" data-reveal>
+                <%= render 'layouts/login' %>
+                <a class="close-reveal-modal">&#215;</a>
+              </div>    
+      <% end %>
+
+    <aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        <li><label>zitat</label></li>
+        <li> <%= link_to 'Edit profile', edit_user_registration_path %></li>
+        <li> <%= link_to 'My books', books_path %></li>
+      </ul>
+    </aside>

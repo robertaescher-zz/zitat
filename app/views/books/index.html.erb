@@ -1,22 +1,30 @@
-<div class="row">
-  <div class="small-10 columns"><h1>Listing books</h1></div>
-  <div class="small-2  columns"><%= link_to 'New Book', new_book_path, :class => "button expand radius" %>
-</div>
-</div>
-
-<div class="row">
+<div class="off-canvas-wrap">
+  <div class="inner-wrap">
+    
+    <%= render 'layouts/navbar' %>
+    
+    <section class="main-section">
+      <div class="row">
+    <div class="small-10 columns"><h1>Listing books</h1></div>
+    <div class="small-2  columns">
+      <%= link_to 'New Book', new_book_path, :class => "button expand radius" %>
+    </div>
+  </div>
+  <div class="row">
     <% @books.each do |book| %>
       <div class="small-3 columns">
-        <h3><%= book.title %></h3>
-        <h5><%= book.subtitle %></h5>
+        <h3><%= book.title %>: <%= book.subtitle %></h3>
         <h4><%= book.author_lastname %>. <%= book.author_firstname %></h4>
         <p><%= book.summary %></p>
         <p><%= link_to 'Show', book, :class => "button radius expand" %></p>
       </div>
-    <% end %>
-     
+    <% end %> 
+  </div>
+    </section>
+  </div>   
 </div>
 
+     
 
-
-
+      
+    
