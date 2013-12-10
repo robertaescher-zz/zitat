@@ -62,18 +62,11 @@
           </div>
           <div class="row">
             <div class="small-12 columns">
-              <dl class="accordion" data-accordion>
-                <dd>
-                  <a href="#panel1">Indireta</a>
-                  <div id="panel1"class="content">
-                    <h6>(<%= @book.author_lastname%>, <%= @book.year%>, p.<%= quote.page_number%>)</h6>
-                  </div>
-                  <a href="#panel2">Direta</a>
-                  <div id="panel2"class="content">
-                    <h6>(<%= @book.author_lastname%>, <%= @book.year%>, p.<%= quote.page_number%>)</h6>
-                  </div>
-                </dd>
-              </dl>
+              <h6>References</h6>
+              <ul>
+                <li>(<%= @book.author_lastname.upcase%>, <%= @book.year%>, p.<%= quote.page_number%>)</li>
+                <li>(<%= @book.author_lastname.upcase%>, <%= @book.year%>)</li>
+              </ul>
             </div>
           </div>
         <% end %>

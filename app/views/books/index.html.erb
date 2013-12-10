@@ -12,10 +12,9 @@
   </div>
   <div class="row">
     <% @books.each do |book| %>
-      <div class="small-3 columns">
+      <div class="small-3 columns end">
         <h3><%= book.title %>: <%= book.subtitle %></h3>
         <h4><%= book.author_lastname %>. <%= book.author_firstname %></h4>
-        <p><%= book.summary %></p>
         <p><%= link_to 'Show', book, :class => "button radius expand" %></p>
       </div>
     <% end %> 
