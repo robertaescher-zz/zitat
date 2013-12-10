@@ -32,11 +32,8 @@
         <%= link_to "Add Quote", '#', data: {:'reveal-id' => 'addQuote'}, :class => 'button radius small right' %>
         <div id="addQuote" class="reveal-modal" data-reveal>
          <%= simple_form_for("quote", :url => quotes_path) do |f| %>
-            <%= f.input :page_number %>
-            <%= f.input :content %>
-            <%= f.input :tag %>
-            <%= f.button :submit, :class => 'button radius expand'  %>
-            <%= f.hidden_field :book_id, :value => @book.id %>
+            
+            <%= render 'layouts/quote_form' %>
           <% end %>
             <a class="close-reveal-modal">&#215;</a>
         </div>

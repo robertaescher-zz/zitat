@@ -1,0 +1,11 @@
+<%= simple_form_for("quote", :url => quotes_path) do |f| %>
+	<div class="row">
+		<div class="small-1 columns"><%= f.input :page_number, label: "pg" %></div>
+		<div class="small-11 columns"><%= f.input :content, as: :text %></div>
+		<div class="small-12 columns"><%= f.input :tag %></div>
+		<div class="small-6 small-offset-6 columns"><%= f.button :submit, :class => 'button radius expand'  %>
+	</div>
+	</div>
+	<%= f.hidden_field :book_id, :value => @book.id %>
+<% end %>
+
